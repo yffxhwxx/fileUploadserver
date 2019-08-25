@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bird.file.dao.GoodsMapper">
+  <resultMap id="BaseResultMap" type="com.bird.file.bean.Goods">
+    <id column="goods_id" jdbcType="INTEGER" property="goodsId" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="goods_onsale" jdbcType="DECIMAL" property="goodsOnsale" />
+    <result column="goods_onstock" jdbcType="INTEGER" property="goodsOnstock" />
+    <result column="goods_sale" jdbcType="DECIMAL" property="goodsSale" />
+    <result column="goods_stock" jdbcType="INTEGER" property="goodsStock" />
+    <result column="file_id" jdbcType="VARCHAR" property="fileId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    goods_id, goods_name, goods_onsale, goods_onstock, goods_sale, goods_stock, file_id
+  </sql>
+  <select id="selectByExample" parameterType="com.bird.file.bean.GoodsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from goods
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from goods
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.bird.file.bean.GoodsExample">
+    delete from goods
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.bird.file.bean.Goods">
+    insert into goods (goods_id, goods_name, goods_onsale, 
+      goods_onstock, goods_sale, goods_stock, 
+      file_id)
+    values (#{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsOnsale,jdbcType=DECIMAL}, 
+      #{goodsOnstock,jdbcType=INTEGER}, #{goodsSale,jdbcType=DECIMAL}, #{goodsStock,jdbcType=INTEGER}, 
+      #{fileId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bird.file.bean.Goods">
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="goodsId != null">
+        goods_id,
+      </if>
+      <if test="goodsName != null">
+        goods_name,
+      </if>
+      <if test="goodsOnsale != null">
+        goods_onsale,
+      </if>
+      <if test="goodsOnstock != null">
+        goods_onstock,
+      </if>
+      <if test="goodsSale != null">
+        goods_sale,
+      </if>
+      <if test="goodsStock != null">
+        goods_stock,
+      </if>
+      <if test="fileId != null">
+        file_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsName != null">
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsOnsale != null">
+        #{goodsOnsale,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsOnstock != null">
+        #{goodsOnstock,jdbcType=INTEGER},
+      </if>
+      <if test="goodsSale != null">
+        #{goodsSale,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsStock != null">
+        #{goodsStock,jdbcType=INTEGER},
+      </if>
+      <if test="fileId != null">
+        #{fileId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.bird.file.bean.GoodsExample" resultType="java.lang.Long">
+    select count(*) from goods
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update goods
+    <set>
+      <if test="record.goodsId != null">
+        goods_id = #{record.goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodsName != null">
+        goods_name = #{record.goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsOnsale != null">
+        goods_onsale = #{record.goodsOnsale,jdbcType=DECIMAL},
+      </if>
+      <if test="record.goodsOnstock != null">
+        goods_onstock = #{record.goodsOnstock,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodsSale != null">
+        goods_sale = #{record.goodsSale,jdbcType=DECIMAL},
+      </if>
+      <if test="record.goodsStock != null">
+        goods_stock = #{record.goodsStock,jdbcType=INTEGER},
+      </if>
+      <if test="record.fileId != null">
+        file_id = #{record.fileId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update goods
+    set goods_id = #{record.goodsId,jdbcType=INTEGER},
+      goods_name = #{record.goodsName,jdbcType=VARCHAR},
+      goods_onsale = #{record.goodsOnsale,jdbcType=DECIMAL},
+      goods_onstock = #{record.goodsOnstock,jdbcType=INTEGER},
+      goods_sale = #{record.goodsSale,jdbcType=DECIMAL},
+      goods_stock = #{record.goodsStock,jdbcType=INTEGER},
+      file_id = #{record.fileId,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bird.file.bean.Goods">
+    update goods
+    <set>
+      <if test="goodsName != null">
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsOnsale != null">
+        goods_onsale = #{goodsOnsale,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsOnstock != null">
+        goods_onstock = #{goodsOnstock,jdbcType=INTEGER},
+      </if>
+      <if test="goodsSale != null">
+        goods_sale = #{goodsSale,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsStock != null">
+        goods_stock = #{goodsStock,jdbcType=INTEGER},
+      </if>
+      <if test="fileId != null">
+        file_id = #{fileId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bird.file.bean.Goods">
+    update goods
+    set goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_onsale = #{goodsOnsale,jdbcType=DECIMAL},
+      goods_onstock = #{goodsOnstock,jdbcType=INTEGER},
+      goods_sale = #{goodsSale,jdbcType=DECIMAL},
+      goods_stock = #{goodsStock,jdbcType=INTEGER},
+      file_id = #{fileId,jdbcType=VARCHAR}
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </update>
+</mapper>
