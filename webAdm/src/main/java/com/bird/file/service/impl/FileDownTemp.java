@@ -1,13 +1,15 @@
 package com.bird.file.service.impl;
 
+import com.bird.file.bean.ExcelFile;
 import com.bird.file.common.result.BaseResult;
-import com.bird.file.dao.FileMapper;
+import com.bird.file.dao.ExcelFileMapper;
 import com.bird.file.service.IFileService;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
@@ -21,7 +23,11 @@ import java.util.UUID;
 public class FileDownTemp implements IFileService {
 
     @Resource
-    FileMapper fileMapper;
+    ExcelFileMapper fileMapper;
+
+    @Value("${dangdang_fileUploadPath}")
+    String filePath;
+
     public boolean downloadTemp(HttpServletResponse response)  {
 
         //构建一个excel文件
@@ -70,7 +76,7 @@ job去找文件时候 是path:fileId-fileName
         String uuidString=uuid.toString();
         String uuidS=uuidString.replace("-","");
         String newFileName=uuidS+"-"+fileName;
-        File path=new File("E:\\工作\\java学习demo\\fileUploadserver\\webAdm\\src\\main\\uploadDir");
+        File path=new File(filePath);
         BufferedInputStream in=null;
         BufferedOutputStream os=null;
         try {
@@ -82,10 +88,10 @@ job去找文件时候 是path:fileId-fileName
                 os.write(bts,0,len);
             }
             //保存文件到db
-            com.bird.file.bean.File fileDB=new com.bird.file.bean.File();
+            ExcelFile fileDB=new ExcelFile();
             fileDB.setFileId(uuidS);
-            fileDB.setFielName(fileName);
-            fileDB.setFielStatus(0);
+            fileDB.setFileName(fileName);
+            fileDB.setFileStatus(0);
             String pathString=path.toString();
             fileDB.setFilePath(pathString);
             fileDB.setLastDealTime(new Date());

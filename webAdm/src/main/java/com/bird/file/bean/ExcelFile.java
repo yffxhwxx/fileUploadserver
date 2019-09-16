@@ -3,18 +3,18 @@ package com.bird.file.bean;
 import java.io.Serializable;
 import java.util.Date;
 
-public class File implements Serializable {
+public class ExcelFile implements Serializable {
     private String fileId;
 
     private String filePath;
 
     private Integer userId;
 
+    private String fileName;
+
+    private Integer fileStatus;
+
     private Date lastDealTime;
-
-    private String fielName;
-
-    private Integer fielStatus;
 
     private static final long serialVersionUID = 1L;
 
@@ -42,28 +42,28 @@ public class File implements Serializable {
         this.userId = userId;
     }
 
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName == null ? null : fileName.trim();
+    }
+
+    public Integer getFileStatus() {
+        return fileStatus;
+    }
+
+    public void setFileStatus(Integer fileStatus) {
+        this.fileStatus = fileStatus;
+    }
+
     public Date getLastDealTime() {
         return lastDealTime;
     }
 
     public void setLastDealTime(Date lastDealTime) {
         this.lastDealTime = lastDealTime;
-    }
-
-    public String getFielName() {
-        return fielName;
-    }
-
-    public void setFielName(String fielName) {
-        this.fielName = fielName == null ? null : fielName.trim();
-    }
-
-    public Integer getFielStatus() {
-        return fielStatus;
-    }
-
-    public void setFielStatus(Integer fielStatus) {
-        this.fielStatus = fielStatus;
     }
 
     @Override
@@ -75,9 +75,9 @@ public class File implements Serializable {
         sb.append(", fileId=").append(fileId);
         sb.append(", filePath=").append(filePath);
         sb.append(", userId=").append(userId);
+        sb.append(", fileName=").append(fileName);
+        sb.append(", fileStatus=").append(fileStatus);
         sb.append(", lastDealTime=").append(lastDealTime);
-        sb.append(", fielName=").append(fielName);
-        sb.append(", fielStatus=").append(fielStatus);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

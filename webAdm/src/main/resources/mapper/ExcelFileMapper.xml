@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bird.file.dao.FileMapper">
-  <resultMap id="BaseResultMap" type="com.bird.file.bean.File">
+<mapper namespace="com.bird.file.dao.ExcelFileMapper">
+  <resultMap id="BaseResultMap" type="com.bird.file.bean.ExcelFile">
     <id column="file_id" jdbcType="VARCHAR" property="fileId" />
     <result column="file_path" jdbcType="VARCHAR" property="filePath" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="file_name" jdbcType="VARCHAR" property="fileName" />
+    <result column="file_status" jdbcType="INTEGER" property="fileStatus" />
     <result column="last_deal_time" jdbcType="TIMESTAMP" property="lastDealTime" />
-    <result column="fiel_name" jdbcType="VARCHAR" property="fielName" />
-    <result column="fiel_status" jdbcType="INTEGER" property="fielStatus" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,15 +68,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    file_id, file_path, user_id, last_deal_time, fiel_name, fiel_status
+    file_id, file_path, user_id, file_name, file_status, last_deal_time
   </sql>
-  <select id="selectByExample" parameterType="com.bird.file.bean.FileExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.bird.file.bean.ExcelFileExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from file
+    from excel_file
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -87,29 +87,29 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from file
+    from excel_file
     where file_id = #{fileId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from file
+    delete from excel_file
     where file_id = #{fileId,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.bird.file.bean.FileExample">
-    delete from file
+  <delete id="deleteByExample" parameterType="com.bird.file.bean.ExcelFileExample">
+    delete from excel_file
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.bird.file.bean.File">
-    insert into file (file_id, file_path, user_id, 
-      last_deal_time, fiel_name, fiel_status
+  <insert id="insert" parameterType="com.bird.file.bean.ExcelFile">
+    insert into excel_file (file_id, file_path, user_id, 
+      file_name, file_status, last_deal_time
       )
     values (#{fileId,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
-      #{lastDealTime,jdbcType=TIMESTAMP}, #{fielName,jdbcType=VARCHAR}, #{fielStatus,jdbcType=INTEGER}
+      #{fileName,jdbcType=VARCHAR}, #{fileStatus,jdbcType=INTEGER}, #{lastDealTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.bird.file.bean.File">
-    insert into file
+  <insert id="insertSelective" parameterType="com.bird.file.bean.ExcelFile">
+    insert into excel_file
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="fileId != null">
         file_id,
@@ -120,14 +120,14 @@
       <if test="userId != null">
         user_id,
       </if>
+      <if test="fileName != null">
+        file_name,
+      </if>
+      <if test="fileStatus != null">
+        file_status,
+      </if>
       <if test="lastDealTime != null">
         last_deal_time,
-      </if>
-      <if test="fielName != null">
-        fiel_name,
-      </if>
-      <if test="fielStatus != null">
-        fiel_status,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -140,25 +140,25 @@
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
+      <if test="fileName != null">
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileStatus != null">
+        #{fileStatus,jdbcType=INTEGER},
+      </if>
       <if test="lastDealTime != null">
         #{lastDealTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="fielName != null">
-        #{fielName,jdbcType=VARCHAR},
-      </if>
-      <if test="fielStatus != null">
-        #{fielStatus,jdbcType=INTEGER},
-      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.bird.file.bean.FileExample" resultType="java.lang.Long">
-    select count(*) from file
+  <select id="countByExample" parameterType="com.bird.file.bean.ExcelFileExample" resultType="java.lang.Long">
+    select count(*) from excel_file
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update file
+    update excel_file
     <set>
       <if test="record.fileId != null">
         file_id = #{record.fileId,jdbcType=VARCHAR},
@@ -169,14 +169,14 @@
       <if test="record.userId != null">
         user_id = #{record.userId,jdbcType=INTEGER},
       </if>
+      <if test="record.fileName != null">
+        file_name = #{record.fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileStatus != null">
+        file_status = #{record.fileStatus,jdbcType=INTEGER},
+      </if>
       <if test="record.lastDealTime != null">
         last_deal_time = #{record.lastDealTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.fielName != null">
-        fiel_name = #{record.fielName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.fielStatus != null">
-        fiel_status = #{record.fielStatus,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -184,19 +184,19 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update file
+    update excel_file
     set file_id = #{record.fileId,jdbcType=VARCHAR},
       file_path = #{record.filePath,jdbcType=VARCHAR},
       user_id = #{record.userId,jdbcType=INTEGER},
-      last_deal_time = #{record.lastDealTime,jdbcType=TIMESTAMP},
-      fiel_name = #{record.fielName,jdbcType=VARCHAR},
-      fiel_status = #{record.fielStatus,jdbcType=INTEGER}
+      file_name = #{record.fileName,jdbcType=VARCHAR},
+      file_status = #{record.fileStatus,jdbcType=INTEGER},
+      last_deal_time = #{record.lastDealTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.bird.file.bean.File">
-    update file
+  <update id="updateByPrimaryKeySelective" parameterType="com.bird.file.bean.ExcelFile">
+    update excel_file
     <set>
       <if test="filePath != null">
         file_path = #{filePath,jdbcType=VARCHAR},
@@ -204,25 +204,25 @@
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
       </if>
+      <if test="fileName != null">
+        file_name = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileStatus != null">
+        file_status = #{fileStatus,jdbcType=INTEGER},
+      </if>
       <if test="lastDealTime != null">
         last_deal_time = #{lastDealTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="fielName != null">
-        fiel_name = #{fielName,jdbcType=VARCHAR},
-      </if>
-      <if test="fielStatus != null">
-        fiel_status = #{fielStatus,jdbcType=INTEGER},
       </if>
     </set>
     where file_id = #{fileId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.bird.file.bean.File">
-    update file
+  <update id="updateByPrimaryKey" parameterType="com.bird.file.bean.ExcelFile">
+    update excel_file
     set file_path = #{filePath,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER},
-      last_deal_time = #{lastDealTime,jdbcType=TIMESTAMP},
-      fiel_name = #{fielName,jdbcType=VARCHAR},
-      fiel_status = #{fielStatus,jdbcType=INTEGER}
+      file_name = #{fileName,jdbcType=VARCHAR},
+      file_status = #{fileStatus,jdbcType=INTEGER},
+      last_deal_time = #{lastDealTime,jdbcType=TIMESTAMP}
     where file_id = #{fileId,jdbcType=VARCHAR}
   </update>
 </mapper>

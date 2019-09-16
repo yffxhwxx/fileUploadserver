@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration >
     <!-- mysql jar 文件位置 -->
-    <classPathEntry location="G:\java\maven\localMaven\mysql\mysql-connector-java\5.1.40\mysql-connector-java-5.1.40.jar" />
+    <classPathEntry location="F:\Repository\mysql\mysql-connector-java\5.1.40\mysql-connector-java-5.1.40.jar" />
     <context id="store" targetRuntime="MyBatis3">
         <!--给javabean生成对应的toString方法等-->
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
@@ -43,7 +43,7 @@
         </javaClientGenerator>
 
         <!-- 通讯录人员表 -->
-        <table tableName="file" enableCountByExample="true" enableDeleteByExample="true"
+        <table tableName="excel_file" enableCountByExample="true" enableDeleteByExample="true"
                enableSelectByExample="true" enableUpdateByExample="true"/>
 
         <table tableName="goods" enableCountByExample="true" enableDeleteByExample="true"

@@ -33,7 +33,7 @@ public class FileController {
     //解决给前端返回中文是问好 produces = "application/json; charset=utf-8"
     @RequestMapping(value = "/uploadFile",method= RequestMethod.POST)
     @ResponseBody
-    public BaseResult<Boolean> uploadFile(@RequestParam("file") CommonsMultipartFile file, String service,
+    public BaseResult<Boolean> uploadFile(@RequestParam("file") CommonsMultipartFile file,
                                  HttpServletRequest request){
         if(null == file){
             BaseResult baseResult=new BaseResult<Boolean>();

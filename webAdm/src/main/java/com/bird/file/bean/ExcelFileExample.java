@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class FileExample {
+public class ExcelFileExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public FileExample() {
+    public ExcelFileExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -305,6 +305,136 @@ public class FileExample {
             return (Criteria) this;
         }
 
+        public Criteria andFileNameIsNull() {
+            addCriterion("file_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileNameIsNotNull() {
+            addCriterion("file_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileNameEqualTo(String value) {
+            addCriterion("file_name =", value, "fileName");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileNameNotEqualTo(String value) {
+            addCriterion("file_name <>", value, "fileName");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileNameGreaterThan(String value) {
+            addCriterion("file_name >", value, "fileName");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileNameGreaterThanOrEqualTo(String value) {
+            addCriterion("file_name >=", value, "fileName");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileNameLessThan(String value) {
+            addCriterion("file_name <", value, "fileName");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileNameLessThanOrEqualTo(String value) {
+            addCriterion("file_name <=", value, "fileName");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileNameLike(String value) {
+            addCriterion("file_name like", value, "fileName");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileNameNotLike(String value) {
+            addCriterion("file_name not like", value, "fileName");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileNameIn(List<String> values) {
+            addCriterion("file_name in", values, "fileName");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileNameNotIn(List<String> values) {
+            addCriterion("file_name not in", values, "fileName");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileNameBetween(String value1, String value2) {
+            addCriterion("file_name between", value1, value2, "fileName");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileNameNotBetween(String value1, String value2) {
+            addCriterion("file_name not between", value1, value2, "fileName");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileStatusIsNull() {
+            addCriterion("file_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileStatusIsNotNull() {
+            addCriterion("file_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileStatusEqualTo(Integer value) {
+            addCriterion("file_status =", value, "fileStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileStatusNotEqualTo(Integer value) {
+            addCriterion("file_status <>", value, "fileStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileStatusGreaterThan(Integer value) {
+            addCriterion("file_status >", value, "fileStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("file_status >=", value, "fileStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileStatusLessThan(Integer value) {
+            addCriterion("file_status <", value, "fileStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("file_status <=", value, "fileStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileStatusIn(List<Integer> values) {
+            addCriterion("file_status in", values, "fileStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileStatusNotIn(List<Integer> values) {
+            addCriterion("file_status not in", values, "fileStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileStatusBetween(Integer value1, Integer value2) {
+            addCriterion("file_status between", value1, value2, "fileStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("file_status not between", value1, value2, "fileStatus");
+            return (Criteria) this;
+        }
+
         public Criteria andLastDealTimeIsNull() {
             addCriterion("last_deal_time is null");
             return (Criteria) this;
@@ -362,136 +492,6 @@ public class FileExample {
 
         public Criteria andLastDealTimeNotBetween(Date value1, Date value2) {
             addCriterion("last_deal_time not between", value1, value2, "lastDealTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielNameIsNull() {
-            addCriterion("fiel_name is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielNameIsNotNull() {
-            addCriterion("fiel_name is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielNameEqualTo(String value) {
-            addCriterion("fiel_name =", value, "fielName");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielNameNotEqualTo(String value) {
-            addCriterion("fiel_name <>", value, "fielName");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielNameGreaterThan(String value) {
-            addCriterion("fiel_name >", value, "fielName");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielNameGreaterThanOrEqualTo(String value) {
-            addCriterion("fiel_name >=", value, "fielName");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielNameLessThan(String value) {
-            addCriterion("fiel_name <", value, "fielName");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielNameLessThanOrEqualTo(String value) {
-            addCriterion("fiel_name <=", value, "fielName");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielNameLike(String value) {
-            addCriterion("fiel_name like", value, "fielName");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielNameNotLike(String value) {
-            addCriterion("fiel_name not like", value, "fielName");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielNameIn(List<String> values) {
-            addCriterion("fiel_name in", values, "fielName");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielNameNotIn(List<String> values) {
-            addCriterion("fiel_name not in", values, "fielName");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielNameBetween(String value1, String value2) {
-            addCriterion("fiel_name between", value1, value2, "fielName");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielNameNotBetween(String value1, String value2) {
-            addCriterion("fiel_name not between", value1, value2, "fielName");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielStatusIsNull() {
-            addCriterion("fiel_status is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielStatusIsNotNull() {
-            addCriterion("fiel_status is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielStatusEqualTo(Integer value) {
-            addCriterion("fiel_status =", value, "fielStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielStatusNotEqualTo(Integer value) {
-            addCriterion("fiel_status <>", value, "fielStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielStatusGreaterThan(Integer value) {
-            addCriterion("fiel_status >", value, "fielStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielStatusGreaterThanOrEqualTo(Integer value) {
-            addCriterion("fiel_status >=", value, "fielStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielStatusLessThan(Integer value) {
-            addCriterion("fiel_status <", value, "fielStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielStatusLessThanOrEqualTo(Integer value) {
-            addCriterion("fiel_status <=", value, "fielStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielStatusIn(List<Integer> values) {
-            addCriterion("fiel_status in", values, "fielStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielStatusNotIn(List<Integer> values) {
-            addCriterion("fiel_status not in", values, "fielStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielStatusBetween(Integer value1, Integer value2) {
-            addCriterion("fiel_status between", value1, value2, "fielStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andFielStatusNotBetween(Integer value1, Integer value2) {
-            addCriterion("fiel_status not between", value1, value2, "fielStatus");
             return (Criteria) this;
         }
     }

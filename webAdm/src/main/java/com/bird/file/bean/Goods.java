@@ -6,8 +6,6 @@ import java.math.BigDecimal;
 public class Goods implements Serializable {
     private Integer goodsId;
 
-    private String goodsName;
-
     private BigDecimal goodsOnsale;
 
     private Integer goodsOnstock;
@@ -16,7 +14,7 @@ public class Goods implements Serializable {
 
     private Integer goodsStock;
 
-    private String fileId;
+    private Integer fileId;
 
     private static final long serialVersionUID = 1L;
 
@@ -26,14 +24,6 @@ public class Goods implements Serializable {
 
     public void setGoodsId(Integer goodsId) {
         this.goodsId = goodsId;
-    }
-
-    public String getGoodsName() {
-        return goodsName;
-    }
-
-    public void setGoodsName(String goodsName) {
-        this.goodsName = goodsName == null ? null : goodsName.trim();
     }
 
     public BigDecimal getGoodsOnsale() {
@@ -68,12 +58,12 @@ public class Goods implements Serializable {
         this.goodsStock = goodsStock;
     }
 
-    public String getFileId() {
+    public Integer getFileId() {
         return fileId;
     }
 
-    public void setFileId(String fileId) {
-        this.fileId = fileId == null ? null : fileId.trim();
+    public void setFileId(Integer fileId) {
+        this.fileId = fileId;
     }
 
     @Override
@@ -83,7 +73,6 @@ public class Goods implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", goodsId=").append(goodsId);
-        sb.append(", goodsName=").append(goodsName);
         sb.append(", goodsOnsale=").append(goodsOnsale);
         sb.append(", goodsOnstock=").append(goodsOnstock);
         sb.append(", goodsSale=").append(goodsSale);
