@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="webAdm:war">
+    <output-path>$PROJECT_DIR$/webAdm/target</output-path>
+    <root id="archive" name="webAdm-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="webAdm:war exploded" />
+    </root>
+  </artifact>
+</component>

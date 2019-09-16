@@ -1,9 +1,9 @@
 
     function postData(){
-
+//formData 就相当于一个表单数据一样,后台可以直接获取
         var formData = new FormData();
         formData.append("file",$("#uploadFile")[0].files[0]);
-        formData.append("service",'App.Passion.UploadFile');
+
         $.ajax({
             url:'uploadFile',
             type:'post',

@@ -10,5 +10,8 @@
         <module name="webAdm" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="file-job" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
